@@ -3,6 +3,7 @@
 namespace AlbertCht\InvisibleReCaptcha;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Request;
 use GuzzleHttp\Client;
 
@@ -215,6 +216,10 @@ class InvisibleReCaptcha
             'remoteip' => $clientIp,
             'response' => $response
         ]);
+
+        if ($this->getOption('debug', false)) {
+            Log::log('debug', 'reCaptcha response', $response);
+        }
 
         return isset($response['success']) && $response['success'] === true;
     }

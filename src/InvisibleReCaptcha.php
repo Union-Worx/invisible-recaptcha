@@ -218,7 +218,7 @@ class InvisibleReCaptcha
         ]);
 
         if ($this->getOption('debug', false)) {
-            Log::log('debug', 'reCaptcha response', $response);
+            Log::debug('reCaptcha response', $response);
         }
 
         return isset($response['success']) && $response['success'] === true;
@@ -248,6 +248,10 @@ class InvisibleReCaptcha
      */
     protected function sendVerifyRequest(array $query = [])
     {
+        if ($this->getOption('debug', false)) {
+            Log::debug('reCaptcha verify request', $query);
+        }
+        
         $response = $this->client->post(static::VERIFY_URI, [
             'form_params' => $query,
         ]);

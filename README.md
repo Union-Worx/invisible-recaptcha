@@ -22,7 +22,9 @@ In reCAPTCHA v2, users need to click the button: "I'm not a robot" to prove they
 composer require albertcht/invisible-recaptcha
 ```
 
-## Laravel 5
+## Laravel
+
+This package supports Laravel 5 through Laravel 13.
 
 ### Setup
 
